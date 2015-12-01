@@ -7,4 +7,5 @@ docker run -it --rm --name letsencrypt \
     -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" -v "${DIR}:${DIR}" \
     ${IMAGE} certonly \
     --server https://acme-v01.api.letsencrypt.org/directory \
-    -a webroot --webroot-path=${DIR} --agree-dev-preview ${DOMAINS} --text $@
+    -a webroot --webroot-path=${DIR} --renew-by-default --agree-dev-preview --agree-tos ${DOMAINS} --text $@
+

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export DOMAINS="-d farsetlabs.org.uk -d assets.farsetlabs.org.uk"
+export DOMAINS="-d farsetlabs.org.uk -d beta.farsetlabs.org.uk -d assets.farsetlabs.org.uk"
 export DIR=/tmp/letsencrypt-auto
 export IMAGE="quay.io/letsencrypt/letsencrypt:latest"
 docker pull ${IMAGE}

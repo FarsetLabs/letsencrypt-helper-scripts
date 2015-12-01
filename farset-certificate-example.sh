@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-export DOMAINS="-d beta.farsetlabs.org.uk -d assets.farsetlabs.org.uk"
+export DOMAINS="-d farsetlabs.org.uk -d assets.farsetlabs.org.uk"
 export DIR=/tmp/letsencrypt-auto
+export IMAGE="quay.io/letsencrypt/letsencrypt:latest"
+docker pull ${IMAGE}
 docker run -it --rm --name letsencrypt \
     -v "/etc/letsencrypt:/etc/letsencrypt" -v "/var/lib/letsencrypt:/var/lib/letsencrypt" -v "${DIR}:${DIR}" \
-    quay.io/letsencrypt/letsencrypt:latest certonly \
+    ${IMAGE} certonly \
     --server https://acme-v01.api.letsencrypt.org/directory \
-    -a webroot --webroot-path=${DIR} --agree-dev-preview ${DOMAINS}
+    -a webroot --webroot-path=${DIR} --agree-dev-preview ${DOMAINS} --text $@
